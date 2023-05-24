@@ -71,4 +71,3 @@ for epoch in range(num_epochs):
 
         if batch_idx % 100 == 0:
             print(f"Epoch: {epoch}, Batch: {batch_idx}, Loss: {loss.item()}")
-
