@@ -28,6 +28,7 @@ def positional_encoding(position, d_model):
     return pos_encoding
 
 #scaled dot-product attention function
+#Attention(Q, K, V) = softmax(QK^T / sqrt(d_k))V
 
 def scaled_dot_product_attention(q, k, v, mask):
     matmul_qk = torch.matmul(q, k.transpose(-2, -1))
