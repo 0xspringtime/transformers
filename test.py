@@ -15,7 +15,7 @@ dropout_rate = 0.1
 #positional encoding
 
 def get_angles(pos, i, d_model):
-    angle_rates = 1 / torch.pow(10000, (2 * (i // 2)) / torch(d_model))
+    angle_rates = 1 / torch.pow(10000, (2 * (i // 2)) / torch.tensor(d_model).float())
     return pos * angle_rates
 
 def positional_encoding(position, d_model):
@@ -142,3 +142,4 @@ class TransformerLanguageModel(nn.Module):
 
 #instantiation
 
+model = TransformerLanguageModel(num_layers, d_model, num_heads, dff, input_vocab_size, maximum_position_encoding, dropout_rate)
