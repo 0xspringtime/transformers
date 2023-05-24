@@ -49,7 +49,7 @@ dataset = TensorDataset(input_data, target_data)
 data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 #train
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 model.to(device)
 
 criterion = nn.CrossEntropyLoss()

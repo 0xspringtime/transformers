@@ -100,7 +100,7 @@ class EncoderLayer(nn.Module):
         attn_output, _ = self.mha(x, x, x, mask)
         attn_output = self.dropout1(attn_output)
         out1 = self.layernorm1(x + attn_output)
-        ffn_output = self.ffn1
+        ffn_output = self.ffn
         ffn_output = self.dropout2(ffn_output)
         out2 = self.layernorm2(out1 + ffn_output)
         return out2
