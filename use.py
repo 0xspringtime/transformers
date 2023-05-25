@@ -10,6 +10,6 @@ loaded_model.eval()
 loaded_model.to(device)
 
 input_text = "Your input text here"
-tokenized_input = tokenize(input_text)  # Use the same tokenizer as during training
+tokenized_input = nltk.word_tokenize(input_text)
 input_indices = torch.tensor([vocab.stoi[token] for token in tokenized_input]).unsqueeze(0).to(device)
 
