@@ -3,6 +3,7 @@ import torch
 from collections import Counter
 from torch.utils.data import TensorDataset, DataLoader
 from simpletransformer import model
+from simpletransformer import input_vocab_size
 import torch.nn as nn
 
 blake = nltk.corpus.gutenberg.words('blake-poems.txt')
@@ -49,7 +50,8 @@ dataset = TensorDataset(input_data, target_data)
 data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
 #train
-device = torch.device("cpu")
+#device = torch.device("cpu")
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 
 criterion = nn.CrossEntropyLoss()
@@ -71,3 +73,5 @@ for epoch in range(num_epochs):
 
         if batch_idx % 100 == 0:
             print(f"Epoch: {epoch}, Batch: {batch_idx}, Loss: {loss.item()}")
+
+torch.save(model.state_dict(), "trained_transformer_model.pth")
