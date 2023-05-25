@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import nltk
+from torchtext.vocab import vocab
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 from simpletransformer import model as loaded_model
