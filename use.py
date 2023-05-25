@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import nltk
+from collections import Counter
 from vocab import vocab
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -12,6 +13,20 @@ loaded_model.eval()
 loaded_model.to(device)
 
 input_text = "Your input text here"
+
+def preprocess_input(input_text):
+    # Convert to lowercase
+    input_text = input_text.lower()
+
+    # Tokenize
+    tokens = nltk.word_tokenize(input_text)
+
+    # Convert tokens to indices using the existing vocabulary
+    input_indices = [vocab.index(token) if token in vocab else vocab_size for token in tokens]
+
+    return input_indices
+
+
 tokenized_input = nltk.word_tokenize(input_text)
-input_indices = torch.tensor([vocab.stoi[token] for token in tokenized_input]).unsqueeze(0).to(device)
+input_indices = torch.tensor([vocab[token] for token in tokenized_input]).unsqueeze(0).to(device)
 
