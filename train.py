@@ -5,6 +5,7 @@ from torch.utils.data import TensorDataset, DataLoader
 from simpletransformer import model
 from simpletransformer import input_vocab_size
 import torch.nn as nn
+from vocab import vocab, vocab_size
 
 blake = nltk.corpus.gutenberg.words('blake-poems.txt')
 
