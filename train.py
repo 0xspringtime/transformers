@@ -2,7 +2,7 @@ import nltk
 import torch
 from collections import Counter
 from torch.utils.data import TensorDataset, DataLoader
-from transformer import model
+from simpletransformer import model
 import torch.nn as nn
 
 blake = nltk.corpus.gutenberg.words('blake-poems.txt')
