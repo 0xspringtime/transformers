@@ -26,7 +26,5 @@ def preprocess_input(input_text):
 
     return input_indices
 
-
-tokenized_input = nltk.word_tokenize(input_text)
-input_indices = torch.tensor([vocab[token] for token in tokenized_input]).unsqueeze(0).to(device)
-
+input_indices = preprocess_input(input_text)
+input_tensor = torch.tensor(input_indices).unsqueeze(0).to(device)
